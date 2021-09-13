@@ -1,21 +1,13 @@
 {
-  "name": "node-typescript-library-starter",
+  "name": "openai-js",
   "version": "0.1.0",
-  "description": "A simple starter template for Node.js library written in TypeScript",
+  "description": "Node.js wrapper for the OpenAI API",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:xg-wang/node-typescript-library-starter.git"
+    "url": "https://github.com/xg-wang/openai-js.git"
   },
-  "homepage": "https://github.com/xg-wang/node-typescript-library-starter",
-  "keywords": [
-    "typescript",
-    "node",
-    "starter",
-    "template",
-    "boilerplate",
-    "eslint",
-    "prettier"
-  ],
+  "homepage": "https://github.com/xg-wang/openai-js#readme",
+  "keywords": ["typescript", "node", "openai"],
   "author": "Thomas Wang <hi@xgwang.me>",
   "license": "MIT",
   "type": "module",

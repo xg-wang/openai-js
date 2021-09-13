@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [node-typescript-library-starter](./node-typescript-library-starter.md) |  |
+|  [openai-js](./openai-js.md) |  |
 
