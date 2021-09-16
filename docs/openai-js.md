@@ -4,9 +4,22 @@
 
 ## openai-js package
 
-## Functions
+## Classes
 
-|  Function | Description |
+|  Class | Description |
 |  --- | --- |
-|  [add(x, y)](./openai-js.add.md) | Add two numbers and return the result |
+|  [Client](./openai-js.client.md) |  |
+
+## Interfaces
+
+|  Interface | Description |
+|  --- | --- |
+|  [Engine](./openai-js.engine.md) |  |
+|  [EngineList](./openai-js.enginelist.md) |  |
+
+## Type Aliases
+
+|  Type Alias | Description |
+|  --- | --- |
+|  [Endpoint](./openai-js.endpoint.md) |  |
 

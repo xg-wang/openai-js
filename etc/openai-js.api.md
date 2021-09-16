@@ -4,8 +4,38 @@
 
 ```ts
 
-// @public
-export function add(x: number, y: number): number;
+// @public (undocumented)
+export class Client {
+    // Warning: (ae-forgotten-export) The symbol "ClientOptions" needs to be exported by the entry point index.d.ts
+    constructor(options?: ClientOptions);
+    readonly engines: {
+        list: () => Promise<EngineList>;
+        retrieve: (engineId: string) => Promise<Engine>;
+    };
+}
+
+// @public (undocumented)
+export type Endpoint = 'engines';
+
+// @public (undocumented)
+export interface Engine {
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    object: "engine";
+    // (undocumented)
+    owner: string;
+    // (undocumented)
+    ready: boolean;
+}
+
+// @public (undocumented)
+export interface EngineList {
+    // (undocumented)
+    data: Engine[];
+    // (undocumented)
+    object: "list";
+}
 
 // (No @packageDocumentation comment for this package)
 

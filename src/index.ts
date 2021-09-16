@@ -1,1 +1,2 @@
-export { add } from "./add";
+export { Client } from './client';
+export * from './types';
