@@ -6,6 +6,9 @@ import type {
   Endpoint,
   Engine,
   EngineList,
+  Search,
+  SearchParamsWithDocuments,
+  SearchParamsWithFile,
 } from "./types";
 
 interface ClientOptions {
@@ -46,15 +49,31 @@ export class Client {
 
   /**
    * https://beta.openai.com/docs/api-reference/completions
+   * TODO: support create completions via GET
    */
   public readonly completions = {
     create: (
       engineId: string,
-      params: CompletionParams
+      requestBody: CompletionParams
     ): Promise<Completion> => {
       return this.fetch<Completion>(`engines/${engineId}/completions`, {
         method: "POST",
-        body: JSON.stringify(params),
+        body: JSON.stringify(requestBody),
+      });
+    },
+  };
+
+  /**
+   * https://beta.openai.com/docs/api-reference/searches
+   */
+  public readonly search = {
+    create: (
+      engineId: string,
+      requestBody: SearchParamsWithDocuments | SearchParamsWithFile
+    ): Promise<Search> => {
+      return this.fetch<Search>(`engines/${engineId}/search`, {
+        method: "POST",
+        body: JSON.stringify(requestBody),
       });
     },
   };

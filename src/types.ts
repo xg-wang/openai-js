@@ -42,3 +42,27 @@ export interface CompletionParams {
   bestOf?: number;
   logitBias?: Record<string, number>;
 }
+
+interface SearchParamsBase {
+  query: string;
+  maxRerank?: number;
+  returnMetadata?: boolean;
+}
+export interface SearchParamsWithDocuments extends SearchParamsBase {
+  documents: string[];
+  file?: never;
+}
+export interface SearchParamsWithFile extends SearchParamsBase {
+  documents?: never;
+  file: string;
+}
+
+export interface SearchData {
+  document: number;
+  object: "search_result";
+  score: number;
+}
+export interface Search {
+  data: SearchData[];
+  object: "list";
+}

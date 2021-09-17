@@ -1,57 +1,11 @@
 import { Client } from "../src/index";
-import nock from "nock";
+import { mocks } from "./mocks";
 import { config } from "dotenv";
 
 // Load API_KEY from .env
 config();
 
-nock("https://api.openai.com/v1")
-  .get("/engines")
-  .reply(200, {
-    data: [
-      {
-        id: "engine-id-0",
-        object: "engine",
-        owner: "organization-owner",
-        ready: true,
-      },
-      {
-        id: "engine-id-2",
-        object: "engine",
-        owner: "organization-owner",
-        ready: true,
-      },
-      {
-        id: "engine-id-3",
-        object: "engine",
-        owner: "openai",
-        ready: false,
-      },
-    ],
-    object: "list",
-  })
-  .get("/engines/davinci")
-  .reply(200, {
-    id: "davinci",
-    object: "engine",
-    owner: "openai",
-    ready: true,
-  })
-  .post("/engines/davinci/completions")
-  .reply(200, {
-    id: "cmpl-uqkvlQyYK7bGYrRHQ0eXlWi7",
-    object: "text_completion",
-    created: 1589478378,
-    model: "davinci:2020-05-03",
-    choices: [
-      {
-        text: " there was a girl who",
-        index: 0,
-        logprobs: null,
-        finish_reason: "length",
-      },
-    ],
-  });
+mocks();
 
 describe("Client", () => {
   let client: Client;
@@ -90,6 +44,19 @@ describe("Client", () => {
         created: expect.any(Number),
         model: expect.any(String),
         choices: expect.arrayContaining([]),
+      });
+    });
+  });
+
+  describe("Search", () => {
+    it("should create search data list", async () => {
+      const search = await client.search.create("davinci", {
+        documents: ["White House", "hospital", "school"],
+        query: "the president",
+      });
+      expect(search).toEqual({
+        object: "list",
+        data: expect.arrayContaining([]),
       });
     });
   });
