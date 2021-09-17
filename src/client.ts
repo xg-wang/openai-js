@@ -1,5 +1,12 @@
-import fetch from "node-fetch";
-import type { Endpoint, Engine, EngineList } from "./types";
+import fetch, { Headers } from "node-fetch";
+import type { RequestInit } from "node-fetch";
+import type {
+  Completion,
+  CompletionParams,
+  Endpoint,
+  Engine,
+  EngineList,
+} from "./types";
 
 interface ClientOptions {
   /**
@@ -37,20 +44,38 @@ export class Client {
     },
   };
 
-  private fetch<T extends unknown>(
+  /**
+   * https://beta.openai.com/docs/api-reference/completions
+   */
+  public readonly completions = {
+    create: (
+      engineId: string,
+      params: CompletionParams
+    ): Promise<Completion> => {
+      return this.fetch<Completion>(`engines/${engineId}/completions`, {
+        method: "POST",
+        body: JSON.stringify(params),
+      });
+    },
+  };
+
+  private async fetch<T extends unknown>(
     endpoint: Endpoint | string,
     requestData: { method: "GET" } | { method: "POST"; body: string }
   ): Promise<T> {
-    const init = Object.assign(
+    const headers = new Headers({
+      Authorization: `Bearer ${this.#apiKey}`,
+    });
+    if (this.#organization) {
+      headers.set("OpenAI-Organization", this.#organization);
+    }
+    const init: RequestInit = Object.assign(
       {
-        headers: {
-          Authorization: `Bearer ${this.#apiKey}`,
-        },
+        headers,
       },
       requestData
     );
-    return fetch(`${this.#baseURL}${endpoint}`, init).then(
-      (res) => res.json() as T
-    );
+    const res = await fetch(`${this.#baseURL}${endpoint}`, init);
+    return res.json() as T;
   }
 }
