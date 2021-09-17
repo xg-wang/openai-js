@@ -68,5 +68,30 @@ export function mocks(): nock.Scope {
         },
       ],
       object: "list",
+    })
+    .post("/classifications")
+    .reply(200, {
+      completion: "cmpl-2euN7lUVZ0d4RKbQqRV79IiiE6M1f",
+      label: "Negative",
+      model: "curie:2020-05-03",
+      object: "classification",
+      search_model: "ada",
+      selected_examples: [
+        {
+          document: 1,
+          label: "Negative",
+          text: "I am sad.",
+        },
+        {
+          document: 0,
+          label: "Positive",
+          text: "A happy moment",
+        },
+        {
+          document: 2,
+          label: "Positive",
+          text: "I am feeling awesome",
+        },
+      ],
     });
 }

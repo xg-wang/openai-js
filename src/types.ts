@@ -29,24 +29,24 @@ export interface Completion {
 
 export interface CompletionParams {
   prompt?: string | string[];
-  maxTokens?: number;
+  max_tokens?: number;
   temperature?: number;
-  topP?: number;
+  top_p?: number;
   n?: number;
   stream?: boolean;
   logprobs?: number;
   echo?: boolean;
   stop?: string | string[];
-  presencePenalty?: number;
-  frequencyPenalty?: number;
+  presence_penalty?: number;
+  frequency_penalty?: number;
   bestOf?: number;
-  logitBias?: Record<string, number>;
+  logit_bias?: Record<string, number>;
 }
 
 interface SearchParamsBase {
   query: string;
-  maxRerank?: number;
-  returnMetadata?: boolean;
+  max_rerank?: number;
+  return_metadata?: boolean;
 }
 export interface SearchParamsWithDocuments extends SearchParamsBase {
   documents: string[];
@@ -65,4 +65,46 @@ export interface SearchData {
 export interface Search {
   data: SearchData[];
   object: "list";
+}
+
+interface ClassificationParamsBase {
+  model: string;
+  query: string;
+  examples?: [string, string][];
+  file?: string;
+  labels?: string[];
+  search_model?: string;
+  temperature?: number;
+  logprobs?: number;
+  max_examples?: number;
+  logit_bias?: Record<string, number>;
+  return_prompt?: boolean;
+  return_metadata?: boolean;
+  expand?: string[];
+}
+export interface ClassificationParamsWithExamples
+  extends ClassificationParamsBase {
+  examples: [string, string][];
+  file?: never;
+}
+export interface ClassificationParamsWithFile extends ClassificationParamsBase {
+  examples?: never;
+  file: string;
+}
+
+// TODO: match label and text from params
+export interface ClassificationSelectedExample {
+  document: number;
+  label: string;
+  text: string;
+}
+
+// TODO: match label and text from params
+export interface Classification {
+  completion: string;
+  label: string;
+  model: string;
+  object: "classification";
+  search_model: string;
+  selected_examples: ClassificationSelectedExample[];
 }

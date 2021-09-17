@@ -1,6 +1,9 @@
 import fetch, { Headers } from "node-fetch";
 import type { RequestInit } from "node-fetch";
 import type {
+  Classification,
+  ClassificationParamsWithExamples,
+  ClassificationParamsWithFile,
   Completion,
   CompletionParams,
   Endpoint,
@@ -72,6 +75,22 @@ export class Client {
       requestBody: SearchParamsWithDocuments | SearchParamsWithFile
     ): Promise<Search> => {
       return this.fetch<Search>(`engines/${engineId}/search`, {
+        method: "POST",
+        body: JSON.stringify(requestBody),
+      });
+    },
+  };
+
+  /**
+   * https://beta.openai.com/docs/api-reference/classifications
+   */
+  public readonly classifications = {
+    create: (
+      requestBody:
+        | ClassificationParamsWithExamples
+        | ClassificationParamsWithFile
+    ): Promise<Classification> => {
+      return this.fetch<Classification>("classifications", {
         method: "POST",
         body: JSON.stringify(requestBody),
       });

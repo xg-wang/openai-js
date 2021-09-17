@@ -30,9 +30,9 @@ describe("Client", () => {
     it("should create completion", async () => {
       const completions = await client.completions.create("davinci", {
         prompt: "Once upon a time",
-        maxTokens: 5,
+        max_tokens: 5,
         temperature: 1,
-        topP: 1,
+        top_p: 1,
         n: 1,
         stream: false,
         logprobs: null,
@@ -57,6 +57,30 @@ describe("Client", () => {
       expect(search).toEqual({
         object: "list",
         data: expect.arrayContaining([]),
+      });
+    });
+  });
+
+  describe("Classification", () => {
+    it("should create classification", async () => {
+      const classification = await client.classifications.create({
+        examples: [
+          ["A happy moment", "Positive"],
+          ["I am sad.", "Negative"],
+          ["I am feeling awesome", "Positive"],
+        ],
+        labels: ["Positive", "Negative", "Neutral"],
+        query: "It is a raining day :(",
+        search_model: "ada",
+        model: "curie",
+      });
+      expect(classification).toEqual({
+        completion: expect.any(String),
+        label: expect.any(String),
+        model: expect.any(String),
+        object: "classification",
+        search_model: "ada",
+        selected_examples: expect.arrayContaining([]),
       });
     });
   });
