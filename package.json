@@ -25,7 +25,7 @@
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc --noEmit",
     "lint:tsc-test": "tsc -p test --noEmit",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "test:api": "NOCK_OFF=true npm run test",
     "prepack": "npm run docs",
     "prepare": "husky install && npm run build && npm run docs"
@@ -37,6 +37,7 @@
     "@types/node": "^16.9.1",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
