@@ -108,3 +108,42 @@ export interface Classification {
   search_model: string;
   selected_examples: ClassificationSelectedExample[];
 }
+
+interface AnswerParamsBase {
+  model: string;
+  question: string;
+  examples: [string, string][];
+  examples_context: string;
+  search_model?: string;
+  max_rerank?: number;
+  temperature?: number;
+  logprobs?: number;
+  max_tokens?: number;
+  stop?: string | string[];
+  n?: number;
+  logit_bias?: Record<string, number>;
+  return_metadata?: boolean;
+  return_prompt?: boolean;
+  expand?: string[];
+}
+export interface AnswerParamsWithDocuments extends AnswerParamsBase {
+  documents: string[];
+  file?: never;
+}
+export interface AnswerParamsWithFile extends AnswerParamsBase {
+  documents?: never;
+  file: string;
+}
+
+export interface AnswerSelectedDocument {
+  document: number;
+  text: string;
+}
+export interface Answer {
+  answers: string[];
+  completion: string;
+  model: string;
+  object: "answer";
+  search_model: string;
+  selected_documents: AnswerSelectedDocument[];
+}

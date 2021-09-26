@@ -13,6 +13,7 @@ import type {
   SearchParamsWithDocuments,
   SearchParamsWithFile,
 } from "./types";
+import { Answer, AnswerParamsWithDocuments, AnswerParamsWithFile } from ".";
 
 interface ClientOptions {
   /**
@@ -91,6 +92,20 @@ export class Client {
         | ClassificationParamsWithFile
     ): Promise<Classification> => {
       return this.fetch<Classification>("classifications", {
+        method: "POST",
+        body: JSON.stringify(requestBody),
+      });
+    },
+  };
+
+  /**
+   * https://beta.openai.com/docs/api-reference/answers
+   */
+  public readonly answers = {
+    create: (
+      requestBody: AnswerParamsWithDocuments | AnswerParamsWithFile
+    ): Promise<Answer> => {
+      return this.fetch<Answer>("answers", {
         method: "POST",
         body: JSON.stringify(requestBody),
       });

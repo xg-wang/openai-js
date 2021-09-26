@@ -4,7 +4,6 @@ import { config } from "dotenv";
 
 // Load API_KEY from .env
 config();
-
 mocks();
 
 describe("Client", () => {
@@ -81,6 +80,31 @@ describe("Client", () => {
         object: "classification",
         search_model: "ada",
         selected_examples: expect.arrayContaining([]),
+      });
+    });
+  });
+
+  describe("Answers", () => {
+    it("should create answer", async () => {
+      const answer = await client.answers.create({
+        documents: ["Puppy A is happy.", "Puppy B is sad."],
+        question: "which puppy is happy?",
+        search_model: "ada",
+        model: "curie",
+        examples_context: "In 2017, U.S. life expectancy was 78.6 years.",
+        examples: [
+          ["What is human life expectancy in the United States?", "78 years."],
+        ],
+        max_tokens: 5,
+        stop: ["\n", "<|endoftext|>"],
+      });
+      expect(answer).toEqual({
+        object: "answer",
+        answers: expect.arrayContaining([]),
+        completion: expect.any(String),
+        model: expect.any(String),
+        search_model: "ada",
+        selected_documents: expect.arrayContaining([]),
       });
     });
   });

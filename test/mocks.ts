@@ -93,5 +93,23 @@ export function mocks(): nock.Scope {
           text: "I am feeling awesome",
         },
       ],
+    })
+    .post("/answers")
+    .reply(200, {
+      answers: ["puppy A."],
+      completion: "cmpl-2euVa1kmKUuLpSX600M41125Mo9NI",
+      model: "curie:2020-05-03",
+      object: "answer",
+      search_model: "ada",
+      selected_documents: [
+        {
+          document: 0,
+          text: "Puppy A is happy. ",
+        },
+        {
+          document: 1,
+          text: "Puppy B is sad. ",
+        },
+      ],
     });
 }
