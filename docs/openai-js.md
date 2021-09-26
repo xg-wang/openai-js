@@ -6,20 +6,36 @@
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [Client](./openai-js.client.md) |  |
+| Class                           | Description |
+| ------------------------------- | ----------- |
+| [Client](./openai-js.client.md) |             |
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [Engine](./openai-js.engine.md) |  |
-|  [EngineList](./openai-js.enginelist.md) |  |
+| Interface                                                                           | Description |
+| ----------------------------------------------------------------------------------- | ----------- |
+| [Answer](./openai-js.answer.md)                                                     |             |
+| [AnswerParamsWithDocuments](./openai-js.answerparamswithdocuments.md)               |             |
+| [AnswerParamsWithFile](./openai-js.answerparamswithfile.md)                         |             |
+| [AnswerSelectedDocument](./openai-js.answerselecteddocument.md)                     |             |
+| [Choice](./openai-js.choice.md)                                                     |             |
+| [Classification](./openai-js.classification.md)                                     |             |
+| [ClassificationParamsWithExamples](./openai-js.classificationparamswithexamples.md) |             |
+| [ClassificationParamsWithFile](./openai-js.classificationparamswithfile.md)         |             |
+| [ClassificationSelectedExample](./openai-js.classificationselectedexample.md)       |             |
+| [Completion](./openai-js.completion.md)                                             |             |
+| [CompletionParams](./openai-js.completionparams.md)                                 |             |
+| [Engine](./openai-js.engine.md)                                                     |             |
+| [EngineList](./openai-js.enginelist.md)                                             |             |
+| [File_2](./openai-js.file_2.md)                                                     |             |
+| [FileList_2](./openai-js.filelist_2.md)                                             |             |
+| [Search](./openai-js.search.md)                                                     |             |
+| [SearchList](./openai-js.searchlist.md)                                             |             |
+| [SearchParamsWithDocuments](./openai-js.searchparamswithdocuments.md)               |             |
+| [SearchParamsWithFile](./openai-js.searchparamswithfile.md)                         |             |
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Endpoint](./openai-js.endpoint.md) |  |
-
+| Type Alias                          | Description |
+| ----------------------------------- | ----------- |
+| [Endpoint](./openai-js.endpoint.md) |             |

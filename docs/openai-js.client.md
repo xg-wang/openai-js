@@ -7,18 +7,23 @@
 <b>Signature:</b>
 
 ```typescript
-export declare class Client 
+export declare class Client
 ```
 
 ## Constructors
 
-|  Constructor | Modifiers | Description |
-|  --- | --- | --- |
-|  [(constructor)(options)](./openai-js.client._constructor_.md) |  | Constructs a new instance of the <code>Client</code> class |
+| Constructor                                                   | Modifiers | Description                                                |
+| ------------------------------------------------------------- | --------- | ---------------------------------------------------------- |
+| [(constructor)(options)](./openai-js.client._constructor_.md) |           | Constructs a new instance of the <code>Client</code> class |
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [engines](./openai-js.client.engines.md) |  | { list: () =&gt; Promise&lt;[EngineList](./openai-js.enginelist.md)<!-- -->&gt;; retrieve: (engineId: string) =&gt; Promise&lt;[Engine](./openai-js.engine.md)<!-- -->&gt;; } | https://beta.openai.com/docs/api-reference/engines |
-
+| Property                                                 | Modifiers | Type                                                                                                                                                                                                                                                                                | Description                                                                                     |
+| -------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| [answers](./openai-js.client.answers.md)                 |           | { create: (requestBody: [AnswerParamsWithDocuments](./openai-js.answerparamswithdocuments.md) \| [AnswerParamsWithFile](./openai-js.answerparamswithfile.md)<!-- -->) =&gt; Promise&lt;[Answer](./openai-js.answer.md)<!-- -->&gt;; }                                               | <b><i>(BETA)</i></b> https://beta.openai.com/docs/api-reference/answers                         |
+| [classifications](./openai-js.client.classifications.md) |           | { create: (requestBody: [ClassificationParamsWithExamples](./openai-js.classificationparamswithexamples.md) \| [ClassificationParamsWithFile](./openai-js.classificationparamswithfile.md)<!-- -->) =&gt; Promise&lt;[Classification](./openai-js.classification.md)<!-- -->&gt;; } | <b><i>(BETA)</i></b> https://beta.openai.com/docs/api-reference/classifications                 |
+| [completions](./openai-js.client.completions.md)         |           | { create: (engineId: string, requestBody: [CompletionParams](./openai-js.completionparams.md)<!-- -->) =&gt; Promise&lt;[Completion](./openai-js.completion.md)<!-- -->&gt;; }                                                                                                      | https://beta.openai.com/docs/api-reference/completions TODO: support create completions via GET |
+| [engines](./openai-js.client.engines.md)                 |           | { list: () =&gt; Promise&lt;[EngineList](./openai-js.enginelist.md)<!-- -->&gt;; retrieve: (engineId: string) =&gt; Promise&lt;[Engine](./openai-js.engine.md)<!-- -->&gt;; }                                                                                                       | https://beta.openai.com/docs/api-reference/engines                                              |
+| [files](./openai-js.client.files.md)                     |           | { list: () =&gt; Promise&lt;FileList&gt;; }                                                                                                                                                                                                                                         | TODO: upload, retrieve, delete https://beta.openai.com/docs/api-reference/files                 |
+| [fineTune](./openai-js.client.finetune.md)               |           | {}                                                                                                                                                                                                                                                                                  | <b><i>(BETA)</i></b> TODO https://beta.openai.com/docs/guides/fine-tuning                       |
+| [search](./openai-js.client.search.md)                   |           | { create: (engineId: string, requestBody: [SearchParamsWithDocuments](./openai-js.searchparamswithdocuments.md) \| [SearchParamsWithFile](./openai-js.searchparamswithfile.md)<!-- -->) =&gt; Promise&lt;[SearchList](./openai-js.searchlist.md)<!-- -->&gt;; }                     | https://beta.openai.com/docs/api-reference/searches                                             |

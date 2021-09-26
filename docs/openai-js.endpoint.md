@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-export declare type Endpoint = 'engines';
+export declare type Endpoint = "engines";
 ```

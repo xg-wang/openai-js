@@ -54,7 +54,7 @@ export class Client {
 
   /**
    * https://beta.openai.com/docs/api-reference/completions
-   * @TODO: support create completions via GET
+   * TODO: support create completions via GET
    */
   public readonly completions = {
     create: (
@@ -116,7 +116,7 @@ export class Client {
   };
 
   /**
-   * @TODO: upload, retrieve, delete
+   * TODO: upload, retrieve, delete
    * https://beta.openai.com/docs/api-reference/files
    */
   public readonly files = {
@@ -129,7 +129,7 @@ export class Client {
 
   /**
    * @beta
-   * @TODO
+   * TODO
    * https://beta.openai.com/docs/guides/fine-tuning
    */
   public readonly fineTune = {};
