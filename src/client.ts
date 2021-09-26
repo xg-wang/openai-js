@@ -9,7 +9,8 @@ import type {
   Endpoint,
   Engine,
   EngineList,
-  Search,
+  FileList,
+  SearchList,
   SearchParamsWithDocuments,
   SearchParamsWithFile,
 } from "./types";
@@ -53,7 +54,7 @@ export class Client {
 
   /**
    * https://beta.openai.com/docs/api-reference/completions
-   * TODO: support create completions via GET
+   * @TODO: support create completions via GET
    */
   public readonly completions = {
     create: (
@@ -74,8 +75,8 @@ export class Client {
     create: (
       engineId: string,
       requestBody: SearchParamsWithDocuments | SearchParamsWithFile
-    ): Promise<Search> => {
-      return this.fetch<Search>(`engines/${engineId}/search`, {
+    ): Promise<SearchList> => {
+      return this.fetch<SearchList>(`engines/${engineId}/search`, {
         method: "POST",
         body: JSON.stringify(requestBody),
       });
@@ -83,6 +84,7 @@ export class Client {
   };
 
   /**
+   * @beta
    * https://beta.openai.com/docs/api-reference/classifications
    */
   public readonly classifications = {
@@ -99,6 +101,7 @@ export class Client {
   };
 
   /**
+   * @beta
    * https://beta.openai.com/docs/api-reference/answers
    */
   public readonly answers = {
@@ -112,12 +115,32 @@ export class Client {
     },
   };
 
+  /**
+   * @TODO: upload, retrieve, delete
+   * https://beta.openai.com/docs/api-reference/files
+   */
+  public readonly files = {
+    list: (): Promise<FileList> => {
+      return this.fetch<FileList>("files", {
+        method: "GET",
+      });
+    },
+  };
+
+  /**
+   * @beta
+   * @TODO
+   * https://beta.openai.com/docs/guides/fine-tuning
+   */
+  public readonly fineTune = {};
+
   private async fetch<T extends unknown>(
     endpoint: Endpoint | string,
     requestData: { method: "GET" } | { method: "POST"; body: string }
   ): Promise<T> {
     const headers = new Headers({
       Authorization: `Bearer ${this.#apiKey}`,
+      "Content-Type": "application/json",
     });
     if (this.#organization) {
       headers.set("OpenAI-Organization", this.#organization);

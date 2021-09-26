@@ -55,6 +55,7 @@ describe("Client", () => {
       });
       expect(search).toEqual({
         object: "list",
+        model: expect.any(String),
         data: expect.arrayContaining([]),
       });
     });

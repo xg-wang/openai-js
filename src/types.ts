@@ -57,13 +57,14 @@ export interface SearchParamsWithFile extends SearchParamsBase {
   file: string;
 }
 
-export interface SearchData {
+export interface Search {
   document: number;
   object: "search_result";
   score: number;
 }
-export interface Search {
-  data: SearchData[];
+export interface SearchList {
+  data: Search[];
+  model: string;
   object: "list";
 }
 
@@ -146,4 +147,18 @@ export interface Answer {
   object: "answer";
   search_model: string;
   selected_documents: AnswerSelectedDocument[];
+}
+
+export interface File {
+  id: string;
+  object: "file";
+  bytes: number;
+  created_at: number;
+  filename: string;
+  purpose: "search" | "answers" | "classifications" | "fine-tune";
+}
+
+export interface FileList {
+  data: File[];
+  object: "list";
 }
