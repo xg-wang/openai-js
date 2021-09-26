@@ -133,8 +133,6 @@ export class Client {
   readonly files: {
     list: () => Promise<FileList_2>;
   };
-  // @beta
-  readonly fineTune: {};
   readonly search: {
     create: (
       engineId: string,
