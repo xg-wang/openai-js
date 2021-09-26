@@ -132,7 +132,7 @@ export class Client {
    * TODO
    * https://beta.openai.com/docs/guides/fine-tuning
    */
-  public readonly fineTune = {};
+  // public readonly fineTune = {};
 
   private async fetch<T extends unknown>(
     endpoint: Endpoint | string,
