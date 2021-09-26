@@ -67,6 +67,7 @@ export function mocks(): nock.Scope {
           score: 55.226,
         },
       ],
+      model: "davinci:2020-05-03",
       object: "list",
     })
     .post("/classifications")
