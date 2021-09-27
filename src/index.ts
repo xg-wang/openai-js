@@ -1,2 +1,2 @@
-export { Client } from './client';
-export * from './types';
+export { Client, ClientOptions } from "./client";
+export * from "./types";

@@ -43,7 +43,7 @@ export interface CompletionParams {
   logit_bias?: Record<string, number>;
 }
 
-interface SearchParamsBase {
+export interface SearchParamsBase {
   query: string;
   max_rerank?: number;
   return_metadata?: boolean;
@@ -68,7 +68,7 @@ export interface SearchList {
   object: "list";
 }
 
-interface ClassificationParamsBase {
+export interface ClassificationParamsBase {
   model: string;
   query: string;
   examples?: [string, string][];
@@ -110,7 +110,7 @@ export interface Classification {
   selected_examples: ClassificationSelectedExample[];
 }
 
-interface AnswerParamsBase {
+export interface AnswerParamsBase {
   model: string;
   question: string;
   examples: [string, string][];

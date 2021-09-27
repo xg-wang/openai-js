@@ -19,8 +19,40 @@ export interface Answer {
   selected_documents: AnswerSelectedDocument[];
 }
 
-// Warning: (ae-forgotten-export) The symbol "AnswerParamsBase" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export interface AnswerParamsBase {
+  // (undocumented)
+  examples: [string, string][];
+  // (undocumented)
+  examples_context: string;
+  // (undocumented)
+  expand?: string[];
+  // (undocumented)
+  logit_bias?: Record<string, number>;
+  // (undocumented)
+  logprobs?: number;
+  // (undocumented)
+  max_rerank?: number;
+  // (undocumented)
+  max_tokens?: number;
+  // (undocumented)
+  model: string;
+  // (undocumented)
+  n?: number;
+  // (undocumented)
+  question: string;
+  // (undocumented)
+  return_metadata?: boolean;
+  // (undocumented)
+  return_prompt?: boolean;
+  // (undocumented)
+  search_model?: string;
+  // (undocumented)
+  stop?: string | string[];
+  // (undocumented)
+  temperature?: number;
+}
+
 // @public (undocumented)
 export interface AnswerParamsWithDocuments extends AnswerParamsBase {
   // (undocumented)
@@ -73,8 +105,36 @@ export interface Classification {
   selected_examples: ClassificationSelectedExample[];
 }
 
-// Warning: (ae-forgotten-export) The symbol "ClassificationParamsBase" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export interface ClassificationParamsBase {
+  // (undocumented)
+  examples?: [string, string][];
+  // (undocumented)
+  expand?: string[];
+  // (undocumented)
+  file?: string;
+  // (undocumented)
+  labels?: string[];
+  // (undocumented)
+  logit_bias?: Record<string, number>;
+  // (undocumented)
+  logprobs?: number;
+  // (undocumented)
+  max_examples?: number;
+  // (undocumented)
+  model: string;
+  // (undocumented)
+  query: string;
+  // (undocumented)
+  return_metadata?: boolean;
+  // (undocumented)
+  return_prompt?: boolean;
+  // (undocumented)
+  search_model?: string;
+  // (undocumented)
+  temperature?: number;
+}
+
 // @public (undocumented)
 export interface ClassificationParamsWithExamples
   extends ClassificationParamsBase {
@@ -104,7 +164,6 @@ export interface ClassificationSelectedExample {
 
 // @public (undocumented)
 export class Client {
-  // Warning: (ae-forgotten-export) The symbol "ClientOptions" needs to be exported by the entry point index.d.ts
   constructor(options?: ClientOptions);
   // @beta
   readonly answers: {
@@ -139,6 +198,12 @@ export class Client {
       requestBody: SearchParamsWithDocuments | SearchParamsWithFile
     ) => Promise<SearchList>;
   };
+}
+
+// @public (undocumented)
+export interface ClientOptions {
+  apiKey?: string;
+  organization?: string;
 }
 
 // @public (undocumented)
@@ -254,8 +319,16 @@ export interface SearchList {
   object: "list";
 }
 
-// Warning: (ae-forgotten-export) The symbol "SearchParamsBase" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export interface SearchParamsBase {
+  // (undocumented)
+  max_rerank?: number;
+  // (undocumented)
+  query: string;
+  // (undocumented)
+  return_metadata?: boolean;
+}
+
 // @public (undocumented)
 export interface SearchParamsWithDocuments extends SearchParamsBase {
   // (undocumented)

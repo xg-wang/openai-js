@@ -16,7 +16,7 @@ import type {
 } from "./types";
 import { Answer, AnswerParamsWithDocuments, AnswerParamsWithFile } from ".";
 
-interface ClientOptions {
+export interface ClientOptions {
   /**
    * API key in an Authorization HTTP header
    * https://beta.openai.com/docs/api-reference/authentication
