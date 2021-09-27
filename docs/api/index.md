@@ -6,6 +6,6 @@
 
 ## Packages
 
-| Package                     | Description |
-| --------------------------- | ----------- |
-| [openai-js](./openai-js.md) |             |
+| Package                              | Description |
+| ------------------------------------ | ----------- |
+| [@xg-wang/openai-js](./openai-js.md) |             |
