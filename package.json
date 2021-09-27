@@ -1,6 +1,6 @@
 {
   "name": "@xg-wang/openai-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node.js wrapper for the OpenAI API",
   "repository": {
     "type": "git",
