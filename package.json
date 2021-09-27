@@ -1,5 +1,5 @@
 {
-  "name": "openai-js",
+  "name": "@xg-wang/openai-js",
   "version": "0.0.1",
   "description": "Node.js wrapper for the OpenAI API",
   "repository": {
